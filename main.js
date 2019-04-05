@@ -12,17 +12,15 @@ const titleEl = document.querySelector('.mood__face');
 const body = document.body;
 
 // TODO: volver y intentar descifrar como funciona esto
-function getRandomIntInclusive(min, max) {
+const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
 
-function isEven(num) {
-  return num%2 === 0;
-}
+const isEven = num => num%2 === 0;
 
-function changeColor() {
+const changeColor = () => {
    // Generar un número aleatorio entre 1 y 100
    const randomNumber = getRandomIntInclusive(1, 100);
 
@@ -40,20 +38,14 @@ function changeColor() {
    }
 }
 
-function changeMood() {
   // Recoger el valor del select y ponerlo en el título
-  titleEl.innerHTML =  selectEl.value;
-}
+const changeMood = () => titleEl.innerHTML =  selectEl.value;
 
 // En este punto compruebo
 // console.log(selectEl, buttonEl, titleEl, body);
 
-// Escuchar click en botón
-buttonEl.addEventListener('click', handleButtonClick);
-
-
 // Crear handler de click en botón
-function handleButtonClick(event) {
+const handleButtonClick = (event) => {
   event.preventDefault();
   
   // En este punto compruebo
@@ -65,3 +57,6 @@ function handleButtonClick(event) {
   // Cambio el color
   changeColor();
 }
+
+// Escuchar click en botón
+buttonEl.addEventListener('click', handleButtonClick);
