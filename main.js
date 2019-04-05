@@ -18,11 +18,40 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
 }
 
+function isEven(num) {
+  return num%2 === 0;
+}
+
+function changeColor() {
+   // Generar un número aleatorio entre 1 y 100
+   const randomNumber = getRandomIntInclusive(1, 100);
+
+   // En este punto compruebo
+   // console.log(randomNumber);
+   
+   if(isEven(randomNumber)) {
+   // Si par
+     // Quitar clase naranja de body
+     body.classList.remove('chilly-orange');
+   } else {
+   // sino
+     // Añadir clase naranja a body
+     body.classList.add('chilly-orange');
+   }
+}
+
+function changeMood() {
+  // Recoger el valor del select y ponerlo en el título
+  titleEl.innerHTML =  selectEl.value;
+}
+
 // En este punto compruebo
 // console.log(selectEl, buttonEl, titleEl, body);
 
 // Escuchar click en botón
 buttonEl.addEventListener('click', handleButtonClick);
+
+
 // Crear handler de click en botón
 function handleButtonClick(event) {
   event.preventDefault();
@@ -30,22 +59,9 @@ function handleButtonClick(event) {
   // En este punto compruebo
   //console.log('CLICK');
   
-  // Recoger el valor del select y ponerlo en el título
-  titleEl.innerHTML =  selectEl.value;
-
-  // Generar un número aleatorio entre 1 y 100
-  const randomNumber = getRandomIntInclusive(1, 100);
-
-  // En este punto compruebo
-  // console.log(randomNumber);
+  // Cambio la cara
+  changeMood();
   
-  if(randomNumber%2 === 0) {
-  // Si par
-    // Quitar clase naranja de body
-    body.classList.remove('chilly-orange');
-  } else {
-  // sino
-    // Añadir clase naranja a body
-    body.classList.add('chilly-orange');
-  }
+  // Cambio el color
+  changeColor();
 }
